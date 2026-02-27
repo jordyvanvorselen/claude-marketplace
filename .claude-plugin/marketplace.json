@@ -1,0 +1,14 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "jordyvanvorselen",
+  "version": "1.0.0",
+  "description": "Jordy van Vorselen's plugin marketplace",
+  "owner": { "name": "Jordy van Vorselen" },
+  "plugins": [{
+    "name": "software-engineering",
+    "description": "Software engineering workflow: problem analysis, user stories, ATDD, refactoring, clean code, test quality review, and pixel-perfect design implementation.",
+    "version": "0.1.0",
+    "source": "./plugins/software-engineering",
+    "category": "development"
+  }]
+}

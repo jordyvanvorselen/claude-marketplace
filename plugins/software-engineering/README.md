@@ -85,6 +85,10 @@ A Claude Code plugin for a structured software engineering workflow: from proble
 "Write clean code for the UserRepository class"
 ```
 
+## Acknowledgements
+
+Big thanks to [@andlaf-ak](https://github.com/andlaf-ak) — a large portion of this plugin is based on their excellent work at [andlaf-ak/claude-code-agents](https://github.com/andlaf-ak/claude-code-agents).
+
 ## Farley Index Rating Scale
 
 | Score | Rating |

@@ -17,6 +17,9 @@ A Claude Code plugin for a structured software engineering workflow: from proble
 /feature-dev:feature-dev /clean-code <story>
     → clean, tested implementation
 
+/user-facing-selectors [path]
+    → user-facing selectors, orphaned data-testid cleanup
+
 /refactor <path>
     → refactored code using the 66-technique catalog
 
@@ -26,7 +29,7 @@ A Claude Code plugin for a structured software engineering workflow: from proble
 
 ## Components
 
-### Commands (6)
+### Commands (7)
 
 | Command | Description |
 |---|---|
@@ -34,6 +37,7 @@ A Claude Code plugin for a structured software engineering workflow: from proble
 | `/software-engineering:stories <analysis-path>` | Decomposes an analysis into INVEST-compliant user stories tracked as beans (epic + features). |
 | `/software-engineering:atdd [bean-id]` | Writes failing Playwright acceptance tests for a bean story. |
 | `/software-engineering:pixelperfect <stitch-id>` | Fetches a Stitch design and implements it pixel-perfectly in the current codebase. |
+| `/software-engineering:user-facing-selectors [path]` | Refactors Playwright tests to use user-facing selectors (getByRole, getByText, getByLabel, etc.) and cleans up orphaned data-testid attributes. |
 | `/software-engineering:refactor <path>` | Identifies code smells and applies the 66-technique Fowler refactoring catalog. |
 | `/software-engineering:test-review [directory]` | Spawns the test-design-reviewer agent to evaluate test quality and produce a Farley Index report. |
 
@@ -74,6 +78,9 @@ A Claude Code plugin for a structured software engineering workflow: from proble
 
 # Implement pixel-perfect from a Stitch design
 /software-engineering:pixelperfect e52a2467
+
+# Refactor tests to user-facing selectors
+/software-engineering:user-facing-selectors integration-tests/login.spec.ts
 
 # Refactor a file or directory
 /software-engineering:refactor src/services/

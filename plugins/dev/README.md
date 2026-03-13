@@ -15,7 +15,12 @@ A Claude Code plugin for a structured software engineering workflow: from proble
     → failing Playwright acceptance tests
 
 /feature-dev:feature-dev /clean-code <story>
-    → clean, tested implementation
+    → clean, tested implementation, but UI is often simplified
+
+/pixel-perfect [stitch screen id]
+    → cleaned up frontend implementation, as pixel perfect as possible following the design within your design system
+
+# Optional when needed
 
 /user-facing-selectors [path]
     → user-facing selectors, orphaned data-testid cleanup
@@ -33,19 +38,21 @@ A Claude Code plugin for a structured software engineering workflow: from proble
 
 | Command | Description |
 |---|---|
-| `/software-engineering:analyze <problem>` | Deep problem analysis — stakeholders, requirements, constraints, risks. Outputs `.analyses/<slug>.md`. |
-| `/software-engineering:stories <analysis-path>` | Decomposes an analysis into INVEST-compliant user stories tracked as beans (epic + features). |
-| `/software-engineering:atdd [bean-id]` | Writes failing Playwright acceptance tests for a bean story. |
-| `/software-engineering:pixelperfect <stitch-id>` | Fetches a Stitch design and implements it pixel-perfectly in the current codebase. |
-| `/software-engineering:user-facing-selectors [path]` | Refactors Playwright tests to use user-facing selectors (getByRole, getByText, getByLabel, etc.) and cleans up orphaned data-testid attributes. |
-| `/software-engineering:refactor <path>` | Identifies code smells and applies the 66-technique Fowler refactoring catalog. |
-| `/software-engineering:test-review [directory]` | Spawns the test-design-reviewer agent to evaluate test quality and produce a Farley Index report. |
+| `/dev:analyze <problem>` | Deep problem analysis — stakeholders, requirements, constraints, risks. Outputs `.analyses/<slug>.md`. |
+| `/dev:stories <analysis-path>` | Decomposes an analysis into INVEST-compliant user stories tracked as beans (epic + features). |
+| `/dev:atdd [bean-id]` | Writes failing Playwright acceptance tests for a bean story. |
+| `/dev:pixelperfect <stitch-id>` | Fetches a Stitch design and implements it pixel-perfectly in the current codebase. |
+| `/dev:user-facing-selectors [path]` | Refactors Playwright tests to use user-facing selectors (getByRole, getByText, getByLabel, etc.) and cleans up orphaned data-testid attributes. |
+| `/dev:refactor <path>` | Identifies code smells and applies the 66-technique Fowler refactoring catalog. |
+| `/dev:test-review [directory]` | Spawns the test-design-reviewer agent to evaluate test quality and produce a Farley Index report. |
 
-### Skills (3)
+### Skills (5)
 
 | Skill | Trigger |
 |---|---|
 | `clean-code` | "write clean code", "apply SOLID principles", "apply GRASP patterns", "improve code quality" |
+| `refactoring-techniques` | Loaded by the /refactor command — complete 66-technique catalog with smell mappings, sequencing, risk, and complexity |
+| `playwright-selectors` | Loaded by the /user-facing-selectors command — locator priority ladder, disambiguation strategies, constraints, and examples |
 | `farley-properties-and-scoring` | Loaded by the test-design-reviewer agent — scoring rubrics and Farley Index formula |
 | `signal-detection-patterns` | Loaded by the test-design-reviewer agent — static detection heuristics per language |
 
@@ -68,25 +75,28 @@ A Claude Code plugin for a structured software engineering workflow: from proble
 
 ```bash
 # Analyze a new problem domain
-/software-engineering:analyze "We need a student directory dashboard for administrators"
+/dev:analyze "We need a student directory dashboard for administrators"
 
 # Decompose the analysis into user stories
-/software-engineering:stories .analyses/student-directory-dashboard.md
+/dev:stories .analyses/student-directory-dashboard.md
 
 # Write acceptance tests for a specific story
-/software-engineering:atdd cd2l
+/dev:atdd cd2l
+
+# Write the code using the excellent official Anthropic plugin in combination with clean code best practices
+/feature-dev:feature-dev /clean-code cd2l
 
 # Implement pixel-perfect from a Stitch design
-/software-engineering:pixelperfect e52a2467
+/dev:pixelperfect e52a2467
 
 # Refactor tests to user-facing selectors
-/software-engineering:user-facing-selectors integration-tests/login.spec.ts
+/dev:user-facing-selectors integration-tests/login.spec.ts
 
 # Refactor a file or directory
-/software-engineering:refactor src/services/
+/dev:refactor src/services/
 
 # Review test design quality
-/software-engineering:test-review src/test/java/
+/dev:test-review src/test/java/
 
 # Ask Claude to apply clean code principles (triggers skill automatically)
 "Write clean code for the UserRepository class"

@@ -3,8 +3,12 @@ name: clean-code
 description: >
   This skill should be used when the user asks to "write clean code",
   "apply clean code principles", "follow SOLID principles", "apply GRASP patterns",
-  "improve code quality", or mentions clean code, design principles, or code quality
-  during implementation tasks. Also loaded by the /atdd and /refactor commands.
+  "improve code quality", "naming conventions", "single responsibility", "DRY",
+  "coupling", "cohesion", "readable code", "maintainable code",
+  "separation of concerns", "dependency injection", or mentions clean code,
+  design principles, or code quality. Also trigger during implementation tasks
+  when quality matters — not only when explicitly asked. Also loaded by the /atdd
+  and /refactor commands.
 ---
 
 Apply SOLID, GRASP, and other design principles as you write code. Your primary goal is to produce code that humans can understand and modify with confidence.

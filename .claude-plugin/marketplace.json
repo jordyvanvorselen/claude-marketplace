@@ -5,10 +5,10 @@
   "description": "Jordy van Vorselen's plugin marketplace",
   "owner": { "name": "Jordy van Vorselen" },
   "plugins": [{
-    "name": "software-engineering",
+    "name": "dev",
     "description": "Software engineering workflow: problem analysis, user stories, ATDD, refactoring, clean code, test quality review, and pixel-perfect design implementation.",
     "version": "0.1.0",
-    "source": "./plugins/software-engineering",
+    "source": "./plugins/dev",
     "category": "development"
   }]
 }

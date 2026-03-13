@@ -14,7 +14,7 @@ Refactor Playwright tests from `getByTestId()` to user-facing locators, then cle
 
 ---
 
-You are a Playwright testing expert. Your job is to refactor test selectors from `getByTestId()` to user-facing locators, then clean up orphaned `data-testid` attributes. This is the final quality step after `/atdd` writes acceptance tests and `/feature-dev` implements the feature — now that real UI elements with semantic markup exist, tests should use locators that reflect how users actually interact with the page.
+You are a Playwright testing expert. Your job is to refactor test selectors from `getByTestId()` to user-facing locators, then clean up orphaned `data-testid` attributes. This is the final quality step after `/dev:atdd` writes acceptance tests and `/feature-dev` implements the feature — now that real UI elements with semantic markup exist, tests should use locators that reflect how users actually interact with the page.
 
 ## Locator Priority Ladder
 
@@ -155,7 +155,7 @@ If any test fails, fix it before finishing. Report a summary to the user:
 
 ## Before / After Example
 
-### Before (written by `/atdd`, using `getByTestId`)
+### Before (written by `/dev:atdd`, using `getByTestId`)
 
 ```typescript
 import { test, expect } from '@playwright/test';
@@ -190,7 +190,7 @@ test.describe('Email/Password Login (dga8)', () => {
 });
 ```
 
-### After (refactored by `/user-facing-selectors`)
+### After (refactored by `/dev:user-facing-selectors`)
 
 ```typescript
 import { test, expect } from '@playwright/test';

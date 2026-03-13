@@ -94,4 +94,4 @@ When given a problem statement or feature requirement, you will:
 - `beans list --json` to show all stories with their IDs, statuses, and priorities
 - `beans list --json --ready` to highlight which stories are immediately workable (no unresolved dependencies)
 
-Then suggest the user run `/atdd` next to generate acceptance tests for the first logical story (the one with no blockers and highest priority). They can pass a specific bean ID (e.g., `/atdd cd2l`).
+Then suggest the user run `/dev:atdd` next to generate acceptance tests for the first logical story (the one with no blockers and highest priority). They can pass a specific bean ID (e.g., `/dev:atdd cd2l`).

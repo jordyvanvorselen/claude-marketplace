@@ -1,7 +1,7 @@
 ---
 description: Analyze and understand a problem domain thoroughly before implementation
 argument-hint: <problem statement>
-allowed-tools: Read, Write, Glob, Grep
+allowed-tools: Read, Write, Glob, Grep, AskUserQuestion
 ---
 
 # /analyze - Problem Analysis
@@ -28,6 +28,16 @@ Your role is exclusively to:
 - UNDERSTAND user needs and motivations
 - CLARIFY requirements and constraints
 - EXPLORE problem space thoroughly
+
+**Before writing any analysis**, use the **AskUserQuestion** tool to interview the user. Cover all three categories — ask until you have no remaining assumptions, edge cases, or open questions:
+
+1. **Assumptions** — What are you taking for granted? Ask about stakeholders, constraints, current workflows, and what success looks like.
+2. **Edge cases** — What exceptional, boundary, or failure scenarios haven't been described? Ask about invalid inputs, unusual users, and scope limits.
+3. **Open questions** — What is genuinely unclear or unknown? Ask about anything that could significantly change the problem understanding.
+
+Keep asking follow-up questions with AskUserQuestion until all assumptions are validated, all relevant edge cases are identified, and no important questions remain unanswered.
+
+---
 
 When analyzing a problem, you will:
 
@@ -87,4 +97,4 @@ Focus purely on understanding WHAT needs to be solved and WHY, never HOW to solv
 
 ---
 
-**When done**: After writing the analysis file, present a concise summary to the user and suggest they run `/stories .analyses/<slug>.md` next to decompose the analysis into trackable user stories in the project's issue tracker.
+**When done**: After writing the analysis file, present a concise summary to the user and suggest they run `/dev:stories .analyses/<slug>.md` next to decompose the analysis into trackable user stories in the project's issue tracker.

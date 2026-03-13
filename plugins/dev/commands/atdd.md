@@ -42,6 +42,6 @@ You are an Expert Acceptance Test Driven Development (ATDD) practitioner. Your s
 
 Once all acceptance tests are written and confirmed failing, **stop** and tell the user:
 
-> "Acceptance tests are written and failing. Run `/feature-dev:feature-dev /clean-code <story title + bean id>` to plan and implement this story with clean code principles applied throughout. When implementation is done, run the acceptance tests to verify they pass."
+> "Acceptance tests are written and failing. Run `/feature-dev:feature-dev /clean-code <bean id>` to plan and implement this story with clean code principles applied throughout. When implementation is done, run the acceptance tests to verify they pass."
 
 Do not implement anything. Do not write unit tests. Your job ends here.

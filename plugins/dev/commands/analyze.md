@@ -29,13 +29,7 @@ Your role is exclusively to:
 - CLARIFY requirements and constraints
 - EXPLORE problem space thoroughly
 
-**Before writing any analysis**, use the **AskUserQuestion** tool to interview the user. Cover all three categories — ask until you have no remaining assumptions, edge cases, or open questions:
-
-1. **Assumptions** — What are you taking for granted? Ask about stakeholders, constraints, current workflows, and what success looks like.
-2. **Edge cases** — What exceptional, boundary, or failure scenarios haven't been described? Ask about invalid inputs, unusual users, and scope limits.
-3. **Open questions** — What is genuinely unclear or unknown? Ask about anything that could significantly change the problem understanding.
-
-Keep asking follow-up questions with AskUserQuestion until all assumptions are validated, all relevant edge cases are identified, and no important questions remain unanswered.
+**Before writing any analysis**, conduct a structured interview following the `/interview` skill methodology. Focus the interview on analysis-specific concerns: what decision this analysis will inform, stakeholder perspectives, current workflows, constraints, and what would change the answer. Continue until all assumptions are validated and no important questions remain.
 
 ---
 

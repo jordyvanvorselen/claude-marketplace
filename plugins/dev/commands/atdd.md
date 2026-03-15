@@ -1,7 +1,7 @@
 ---
 description: Write Playwright acceptance tests for a user story
 argument-hint: [bean-id]
-allowed-tools: Read, Write, Bash, Glob, Grep
+allowed-tools: Read, Write, Bash, Glob, Grep, AskUserQuestion
 ---
 
 # /atdd - Write Acceptance Tests
@@ -27,6 +27,13 @@ You are an Expert Acceptance Test Driven Development (ATDD) practitioner. Your s
 3. **Claim the story**: Run `beans update <id> -s in-progress --json` to mark it as in progress.
 
 4. **Load story details**: Run `beans show <id> --json` to get the full description and acceptance criteria.
+
+5. **Clarify acceptance criteria**: Review the story's acceptance criteria. If any criterion is ambiguous, incomplete, or could be interpreted multiple ways, conduct a focused interview following the `/interview` skill methodology. Focus on:
+   - What exactly each criterion means in concrete, testable terms
+   - Boundary conditions and edge cases implied but not stated
+   - Expected behavior for error/failure scenarios
+
+   Skip this step if all criteria are already clear and testable.
 
 ## Writing Acceptance Tests
 

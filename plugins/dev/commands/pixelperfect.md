@@ -1,7 +1,7 @@
 ---
 description: Fetch a Stitch design and implement it pixel-perfectly
 argument-hint: <stitch-screen-id>
-allowed-tools: Read, Write, Edit, Bash, Glob, Grep
+allowed-tools: Read, Write, Edit, Bash, Glob, Grep, AskUserQuestion
 ---
 
 # /pixelperfect - Implement a Stitch Design Pixel-Perfectly
@@ -42,15 +42,17 @@ Produce a **gap list** — a concise bullet list of every visual difference foun
 
 The design system lives in `app/components/ui/`. Before implementing, check every gap in the list against what already exists. There are three cases to handle:
 
-**Case A — No equivalent exists at all** (new color token, new utility, missing component):
-> "The Stitch design uses [X], which isn't in our design system at all. Should I add it, or use [closest existing alternative]?"
+After building the gap list, resolve each Case A and Case B gap using the `/interview` skill methodology — present one gap at a time with concrete options, wait for the answer, then move to the next. This prevents overwhelming the user with a wall of decisions and allows follow-up questions when answers reveal dependencies between gaps.
 
-**Case B — A close match exists but differs slightly** (e.g. a Card variant that's almost right but has different padding or shadow; a Badge color that's close but not exact):
-> "The Stitch design uses a [component/value] that's similar to our existing [X] but differs in [Y]. Should I: (1) add a new variant, (2) update the existing one, or (3) use the existing one as-is and skip this difference?"
+**Case A — No equivalent exists at all** (new color token, new utility, missing component): ask a concrete question like:
+> "The design uses color `#3B82F6` for links, which isn't in our tokens. Should I add it as `--color-link`, or use the existing `--color-primary` (#2563EB)?"
+
+**Case B — A close match exists but differs slightly** (e.g. a Card variant that's almost right but has different padding or shadow; a Badge color that's close but not exact): ask a concrete question like:
+> "The Stitch design uses a 2px border-radius on cards, but our Card component uses 4px. Should I: (1) add a `square` variant, (2) update the default, or (3) keep 4px as-is?"
 
 **Case C — An exact match exists:** Use it silently, no need to ask.
 
-Wait for confirmation on A and B before implementing. Do not silently approximate.
+Do not present all gaps at once. Do not silently approximate.
 
 **One silent exception — icon substitution:** Replace every Material Symbols icon in the Stitch HTML with the equivalent `lucide:*` icon (project convention uses `<Icon name="lucide:..." />`). No need to ask.
 
@@ -77,7 +79,7 @@ With all design gaps resolved (either confirmed additions, updates, or approved 
 | Always fetch Stitch first | Use `mcp__stitch__get_screen` before writing a single line |
 | Data-testids | Never remove or rename — tests depend on them |
 | Logic/behaviour | Never change — only visual markup |
-| Design system gaps (new) | Ask before adding |
-| Design system gaps (close match) | Ask: new variant, update existing, or use existing as-is? |
+| Design system gaps (new) | Ask one at a time before adding |
+| Design system gaps (close match) | Ask one at a time: new variant, update existing, or use existing as-is? |
 | Icons | Silently swap Material Symbols → `lucide:*` |
 | Visual regression snapshots | Remind user to run `bun run test:visual-regression:fix` after implementation |

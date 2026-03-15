@@ -7,7 +7,7 @@
   "plugins": [{
     "name": "dev",
     "description": "Software engineering workflow: problem analysis, user stories, ATDD, refactoring, clean code, test quality review, and pixel-perfect design implementation.",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "source": "./plugins/dev",
     "category": "development"
   }]

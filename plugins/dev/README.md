@@ -11,14 +11,16 @@ A Claude Code plugin for a structured software engineering workflow: from proble
 /stories .analyses/<slug>.md
     → beans (epic + user stories with acceptance criteria)
 
+/design [flows/analysis path]
+    → production-grade screen designs in Pencil (.pen) + DESIGN.md + handoff assets,
+      via an orchestrated pipeline (flows if missing → wireframes → copy → direction →
+      hi-fi → critique → hardening → handoff) with a Fable subagent per phase
+
 /atdd [bean-id]
     → failing Playwright acceptance tests
 
 /feature-dev:feature-dev /clean-code <story>
-    → clean, tested implementation, but UI is often simplified
-
-/pixel-perfect [stitch screen id]
-    → cleaned up frontend implementation, as pixel perfect as possible following the design within your design system
+    → clean, tested implementation, UI built against the .pen designs
 
 # Optional when needed
 
@@ -40,8 +42,8 @@ A Claude Code plugin for a structured software engineering workflow: from proble
 |---|---|
 | `/dev:analyze <problem>` | Deep problem analysis — stakeholders, requirements, constraints, risks. Outputs `.analyses/<slug>.md`. |
 | `/dev:stories <analysis-path>` | Decomposes an analysis into INVEST-compliant user stories tracked as beans (epic + features). |
+| `/dev:design [flows-path] [.pen]` | Orchestrates the full screen-design pipeline in Pencil with one Fable subagent per phase, using the Intent and Impeccable design skills. |
 | `/dev:atdd [bean-id]` | Writes failing Playwright acceptance tests for a bean story. |
-| `/dev:pixelperfect <stitch-id>` | Fetches a Stitch design and implements it pixel-perfectly in the current codebase. |
 | `/dev:user-facing-selectors [path]` | Refactors Playwright tests to use user-facing selectors (getByRole, getByText, getByLabel, etc.) and cleans up orphaned data-testid attributes. |
 | `/dev:refactor <path>` | Identifies code smells and applies the 66-technique Fowler refactoring catalog. |
 | `/dev:test-review [directory]` | Spawns the test-design-reviewer agent to evaluate test quality and produce a Farley Index report. |
@@ -68,7 +70,8 @@ A Claude Code plugin for a structured software engineering workflow: from proble
 |---|---|
 | [beans CLI](https://github.com/hmans/beans) | `/stories`, `/atdd` |
 | [Playwright](https://playwright.dev) | `/atdd` |
-| [Stitch MCP](https://stitch.design) | `/pixelperfect` |
+| [Pen desktop app + Pencil MCP](https://pencil.dev) | `/design` (must be open before starting Claude Code) |
+| `intent` + `impeccable` plugins | `/design` (phase subagents invoke their skills) |
 | Python 3 | `/test-review` (scoring calculator) |
 
 ## Usage Examples
@@ -80,14 +83,14 @@ A Claude Code plugin for a structured software engineering workflow: from proble
 # Decompose the analysis into user stories
 /dev:stories .analyses/student-directory-dashboard.md
 
+# Design the screens from the mapped flows (open the Pen app first)
+/dev:design .intent/journeys.md
+
 # Write acceptance tests for a specific story
 /dev:atdd cd2l
 
 # Write the code using the excellent official Anthropic plugin in combination with clean code best practices
 /feature-dev:feature-dev /clean-code cd2l
-
-# Implement pixel-perfect from a Stitch design
-/dev:pixelperfect e52a2467
 
 # Refactor tests to user-facing selectors
 /dev:user-facing-selectors integration-tests/login.spec.ts

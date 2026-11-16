@@ -1,0 +1,7 @@
+{
+  "name": "prompt-snippets",
+  "version": "1.0.0",
+  "description": "Toggle single-purpose prompt rules that are prepended or appended to your next message",
+  "author": { "name": "Jordy van Vorselen" },
+  "types": "./types/index.d.ts"
+}

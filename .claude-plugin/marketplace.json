@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "jordyvanvorselen",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Jordy van Vorselen's plugin marketplace",
   "owner": { "name": "Jordy van Vorselen" },
   "plugins": [{
@@ -10,5 +10,11 @@
     "version": "1.1.0",
     "source": "./plugins/dev",
     "category": "development"
+  }, {
+    "name": "prompt-snippets",
+    "description": "Toggle single-purpose prompt rules from a /snippets menu; they are prepended or appended to your next message.",
+    "version": "1.0.0",
+    "source": "./plugins/prompt-snippets",
+    "category": "productivity"
   }]
 }
